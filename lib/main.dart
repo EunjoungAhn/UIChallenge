@@ -110,35 +110,29 @@ class App extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                Transform.translate(
-                  offset: const Offset(0, -15),
-                  child: const CurrencyCard(
-                    name: "Euro",
-                    code: "EUR",
-                    amount: "6 428",
-                    icon: Icons.euro_rounded,
-                    isInverted: false,
-                  ),
+                const CurrencyCard(
+                  name: "Euro",
+                  code: "EUR",
+                  amount: "6 428",
+                  icon: Icons.euro_rounded,
+                  isInverted: false,
+                  order: 1,
                 ),
-                Transform.translate(
-                  offset: const Offset(0, -30),
-                  child: const CurrencyCard(
-                    name: "Dollar",
-                    code: "USD",
-                    amount: "55 622",
-                    icon: Icons.attach_money_rounded,
-                    isInverted: true,
-                  ),
+                const CurrencyCard(
+                  name: "Dollar",
+                  code: "USD",
+                  amount: "55 622",
+                  icon: Icons.attach_money_rounded,
+                  isInverted: true,
+                  order: 2,
                 ),
-                Transform.translate(
-                  offset: const Offset(0, -50),
-                  child: const CurrencyCard(
-                    name: "Rupee",
-                    code: "INR",
-                    amount: "28 981",
-                    icon: Icons.currency_rupee,
-                    isInverted: false,
-                  ),
+                const CurrencyCard(
+                  name: "Rupee",
+                  code: "INR",
+                  amount: "28 981",
+                  icon: Icons.currency_rupee,
+                  isInverted: false,
+                  order: 3,
                 ),
               ],
             ),
