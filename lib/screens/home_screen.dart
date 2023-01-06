@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -8,6 +10,24 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int totalSeconds = 1500;
+  late Timer timer; // 당장 초기화 하지 않는 변수
+
+  void onTick(Timer timer) {
+    // 매 1초마다 HomeScreenWidget의 setState를 실행
+    setState(() {
+      //그때마다 남은 시간(totalSeconds)에서 1초씩 뺄거다
+      totalSeconds = totalSeconds - 1;
+    });
+  }
+
+  void onStartPressed() {
+    timer = Timer.periodic(
+      const Duration(seconds: 1), // 매 1초 하다 여기있는 함수가 실행
+      onTick,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Container(
               alignment: Alignment.bottomCenter,
               child: Text(
-                "25:00",
+                "$totalSeconds",
                 style: TextStyle(
                   color: Theme.of(context).cardColor,
                   fontSize: 89,
@@ -36,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: IconButton(
                 iconSize: 120,
                 color: Theme.of(context).cardColor,
-                onPressed: () => setState(() {}),
+                onPressed: onStartPressed,
                 icon: const Icon(Icons.play_circle_fill_outlined),
               ),
             ),
@@ -49,6 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Container(
                     decoration: BoxDecoration(
                       color: Theme.of(context).cardColor,
+                      borderRadius: BorderRadius.circular(50),
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
